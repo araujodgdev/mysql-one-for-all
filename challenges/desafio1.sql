@@ -33,7 +33,7 @@ CREATE TABLE album(
 
 CREATE TABLE pessoa_usuaria_seguindo(
     pessoa_usuaria INT NOT NULL,
-    artista INT,
+    artista INT NOT NULL,
     CONSTRAINT PRIMARY KEY (pessoa_usuaria, artista),
       FOREIGN KEY (pessoa_usuaria) REFERENCES pessoa_usuaria (pessoa_usuaria_id),
       FOREIGN KEY (artista) REFERENCES artista (artista_id)
@@ -48,10 +48,10 @@ CREATE TABLE cancao(
 ) engine = InnoDB;
 
 CREATE TABLE historico_reproducao(
-    reproducao_id INT PRIMARY KEY AUTO_INCREMENT,
-    pessoa_usuaria INT NOT NULL,
-    cancao INT NOT NULL,
-    data_reproducao DATETIME NOT NULL,
+    pessoa_usuaria INT,
+    cancao INT,
+    data_reproducao DATETIME,
+    CONSTRAINT PRIMARY KEY (pessoa_usuaria, cancao, data_reproducao),
     FOREIGN KEY (pessoa_usuaria) REFERENCES pessoa_usuaria (pessoa_usuaria_id),
     FOREIGN KEY (cancao) REFERENCES cancao (cancao_id)
 ) engine = InnoDB;
