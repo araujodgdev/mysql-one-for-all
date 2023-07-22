@@ -1,7 +1,7 @@
--- Descomente e altere as linhas abaixo:
-
 DROP DATABASE IF EXISTS SpotifyClone;
 CREATE DATABASE IF NOT EXISTS SpotifyClone;
+
+USE SpotifyClone;
 
 CREATE TABLE artista (
     artista_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -11,7 +11,7 @@ CREATE TABLE artista (
 CREATE TABLE plano(
     plano_id INT PRIMARY KEY AUTO_INCREMENT,
     plano_nome VARCHAR(50) NOT NULL,
-    plano_valor DOUBLE NOT NULL,
+    plano_valor DOUBLE NOT NULL
 ) engine = InnoDB;
 
 CREATE TABLE pessoa_usuaria(
@@ -33,7 +33,7 @@ CREATE TABLE album(
 
 CREATE TABLE pessoa_usuaria_seguindo(
     pessoa_usuaria INT NOT NULL,
-    artista VARCHAR(50),
+    artista INT,
     CONSTRAINT PRIMARY KEY (pessoa_usuaria, artista),
       FOREIGN KEY (pessoa_usuaria) REFERENCES pessoa_usuaria (pessoa_usuaria_id),
       FOREIGN KEY (artista) REFERENCES artista (artista_id)
@@ -49,7 +49,7 @@ CREATE TABLE cancao(
 
 CREATE TABLE historico_reproducao(
     reproducao_id INT PRIMARY KEY AUTO_INCREMENT,
-    pessoa_usuaria VARCHAR(50) NOT NULL,
+    pessoa_usuaria INT NOT NULL,
     cancao INT NOT NULL,
     data_reproducao DATETIME NOT NULL,
     FOREIGN KEY (pessoa_usuaria) REFERENCES pessoa_usuaria (pessoa_usuaria_id),
@@ -65,7 +65,7 @@ VALUES
   ('Blind Guardian'),
   ('Nina Simone');
 
-INSERT INTO SpotifyClone.plano (nome_plano, valor_plano)
+INSERT INTO SpotifyClone.plano (plano_nome, plano_valor)
 VALUES
   ('gratuito', 0),
   ('universitário', 5.99),
@@ -98,7 +98,7 @@ VALUES
 
 INSERT INTO SpotifyClone.pessoa_usuaria_seguindo (pessoa_usuaria, artista)
 VALUES
-  (1, 1)
+  (1, 1),
   (1, 2),
   (1, 3),
   (2, 1),
@@ -110,7 +110,6 @@ VALUES
   (6, 6),
   (6, 1),
   (7, 6),
-  (8,  ),
   (9, 3),
   (10, 2);
 
@@ -144,5 +143,6 @@ VALUES
   (7, 4, "2011-12-15 22:30:49"),
   (8, 4, "2012-03-17 14:56:41"),
   (9, 9, "2022-02-24 21:14:22"),
-  (10, 3, "2015-12-13 08:30:22"),
+  (10, 3, "2015-12-13 08:30:22");
+
 
