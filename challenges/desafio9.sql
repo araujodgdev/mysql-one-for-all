@@ -7,5 +7,5 @@ JOIN
 ON
 	hstrc.pessoa_usuaria = pu.pessoa_usuaria_id
 WHERE
-	pu.nome_pessoa_usuaria = "Barbara Liskov"
-;
+	pu.nome_pessoa_usuaria = "Barbara Liskov";
+  
