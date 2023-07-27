@@ -9,4 +9,6 @@ ON
 	art.artista_id = alb.artista
 WHERE
 	nome_artista = "Elis Regina"
+ORDER BY 
+  album ASC
 ;
