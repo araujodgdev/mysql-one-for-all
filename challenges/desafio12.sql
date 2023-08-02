@@ -16,11 +16,12 @@ JOIN
 	SpotifyClone.cancao c
 ON
 	alb.album_id = c.album
-JOIN
+LEFT JOIN
 	SpotifyClone.cancao_favorita cfav
 ON
 	c.cancao_id = cfav.cancao
 GROUP BY	
 	art.nome_artista
 ORDER BY
-	ranking ASC, artista ASC;
+	COUNT(cfav.cancao) DESC, artista ASC
+;
